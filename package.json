@@ -1,8 +1,13 @@
 {
-  "name": "react-component-boilerplate",
+  "name": "create-react-component-boilerplate",
   "description": "Boilerplate for React.js components",
   "author": "Juho Vepsalainen",
   "user": "survivejs",
+  "contributors": [{
+    "name": "Binh Quan",
+    "email": "binhqd@gmail.com",
+    "url" : "https://github.com/binhqd"
+  }],
   "version": "6.1.2",
   "scripts": {
     "start": "catalog start docs",
@@ -57,11 +62,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/survivejs/react-component-boilerplate.git"
-  },
-  "homepage": "https://survivejs.github.io/react-component-boilerplate/",
-  "bugs": {
-    "url": "https://github.com/survivejs/react-component-boilerplate/issues"
+    "url": "https://github.com/binhqd/react-component-boilerplate.git"
   },
   "jest": {
     "collectCoverage": true,
@@ -77,7 +78,12 @@
   "keywords": [
     "react",
     "reactjs",
-    "boilerplate"
+    "boilerplate",
+    "react-component",
+    "component",
+    "jest",
+    "enzyme",
+    "catalog"
   ],
   "license": "MIT",
   "pre-push": [
