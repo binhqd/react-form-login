@@ -10,12 +10,19 @@ import '../style.css';
 
 // Add your documentation imports here. These are available to
 // React specimen. Do NOT pass React here as Catalog does that.
-const documentationImports = {};
+const documentationImports = {
+  LoginForm: require('../src/LoginForm')
+};
 const pages = [
   {
     path: '/',
     title: 'Introduction',
     content: pageLoader(() => import('../README.md'))
+  },
+  {
+    path: '/usage',
+    title: 'Usage',
+    content: pageLoader(() => import('./doc.md'))
   }
 ];
 
@@ -23,7 +30,7 @@ const pages = [
 ReactDOM.render(
   <div>
     <GithubCorner
-      href="https://github.com/survivejs/react-component-boilerplate"
+      href="https://github.com/binhqd/react-form-login"
       bannerColor="#fff"
       octoColor="#000"
       width={80}
