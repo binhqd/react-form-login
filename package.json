@@ -3,7 +3,7 @@
   "description": "Login form component written in ReactJS",
   "author": "Binh Quan",
   "user": "binhqd",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "start": "catalog start docs",
     "test": "jest",
