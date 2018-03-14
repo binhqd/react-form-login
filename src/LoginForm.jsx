@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import ErrorText from './ErrorText';
 // import styles from './style.scss';
-let styles = require('!css-loader?importLoaders=1&modules=true&localIdentName=[name]__[local]___[hash:base64:5]!./style.css');
+let styles = require('!css-loader!sass-loader?localIdentName=[name]__[local]___[hash:base64:5]!./style.scss');
 
 class LoginForm extends React.Component {
   constructor(props, context) {
@@ -17,7 +17,6 @@ class LoginForm extends React.Component {
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
-
   }
 
   handleLogin() {
@@ -98,7 +97,7 @@ class LoginForm extends React.Component {
     `;
 
     const InputContainer = styled.div`
-      ${'' /* margin-bottom: 15px; */}
+      margin-bottom: 15px;
     `;
 
     const Input = styled.input`
