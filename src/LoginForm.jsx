@@ -2,7 +2,8 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import ErrorText from './ErrorText';
-import styles from './style.css';
+// import styles from './style.scss';
+let styles = require('!css-loader?importLoaders=1&modules=true&localIdentName=[name]__[local]___[hash:base64:5]!./style.css');
 
 class LoginForm extends React.Component {
   constructor(props, context) {
@@ -16,6 +17,7 @@ class LoginForm extends React.Component {
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
+
   }
 
   handleLogin() {
@@ -96,7 +98,7 @@ class LoginForm extends React.Component {
     `;
 
     const InputContainer = styled.div`
-      margin-bottom: 15px;
+      ${'' /* margin-bottom: 15px; */}
     `;
 
     const Input = styled.input`
@@ -195,7 +197,7 @@ class LoginForm extends React.Component {
 
     return (
       <TheForm action="javascript:void(0)" noValidate onSubmit={this.handleLogin}>
-        <InputContainer>
+        <InputContainer className={styles.locals['input-container']}>
           <Username
             maxLength={usernameOptions.maxLength}
             placeholder={usernameOptions.placeholder}
