@@ -2,6 +2,8 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import ErrorText from './ErrorText';
+// import styles from './style.scss';
+let styles = require('!css-loader?importLoaders=1&modules=true&localIdentName=[name]__[local]___[hash:base64:5]!./style.css');
 
 class LoginForm extends React.Component {
   constructor(props, context) {
@@ -15,6 +17,7 @@ class LoginForm extends React.Component {
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
+
   }
 
   handleLogin() {
@@ -95,7 +98,7 @@ class LoginForm extends React.Component {
     `;
 
     const InputContainer = styled.div`
-      margin-bottom: 15px;
+      ${'' /* margin-bottom: 15px; */}
     `;
 
     const Input = styled.input`
@@ -168,9 +171,33 @@ class LoginForm extends React.Component {
       float: left;
     `;
 
+    const InputIcon = styled.span`
+      color: #777;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      display: block;
+      width: 34px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      pointer-events: none;
+      font-family: 'Glyphicons Halflings';
+      font-style: normal;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+      font-size: 14px;
+
+      &:before {
+        content: "\\2709";
+      }
+    `;
+
     return (
       <TheForm action="javascript:void(0)" noValidate onSubmit={this.handleLogin}>
-        <InputContainer>
+        <InputContainer className={styles.locals['input-container']}>
           <Username
             maxLength={usernameOptions.maxLength}
             placeholder={usernameOptions.placeholder}
@@ -181,7 +208,7 @@ class LoginForm extends React.Component {
             value={this.state.Username}
           />
           <ErrorText errText={this.state.error.email} />
-          <span className="glyphicon glyphicon-envelope form-control-feedback" />
+          <InputIcon className="glyphicon glyphicon-envelope form-control-feedback" />
         </InputContainer>
         <InputContainer className="form-group has-feedback">
           <Password
@@ -195,7 +222,7 @@ class LoginForm extends React.Component {
             value={this.state.Password}
           />
           <ErrorText errText={this.state.error.password} />
-          <span className="glyphicon glyphicon-lock form-control-feedback" />
+          <InputIcon className="glyphicon glyphicon-lock form-control-feedback" />
         </InputContainer>
         <div style={{
             content: ' ',
@@ -203,8 +230,8 @@ class LoginForm extends React.Component {
             marginLeft: -15
           }}
         >
-          <RememberContainer className="col-xs-8">
-            <div className="checkbox icheck">
+          <RememberContainer>
+            <div>
               <label htmlFor="remember">
                 <input
                   id="remember"
@@ -216,7 +243,7 @@ class LoginForm extends React.Component {
             </div>
           </RememberContainer>
           <BtnSigninContainer>
-            <BtnSignin className="btn btn-primary btn-block btn-flat" type="submit">Sign In</BtnSignin>
+            <BtnSignin type="submit">Sign In</BtnSignin>
           </BtnSigninContainer>
         </div>
       </TheForm>
