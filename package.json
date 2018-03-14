@@ -83,5 +83,8 @@
   "license": "MIT",
   "pre-push": [
     "test"
-  ]
+  ],
+  "dependencies": {
+    "styled-components": "^3.2.2"
+  }
 }
