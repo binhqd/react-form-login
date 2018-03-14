@@ -10,8 +10,10 @@ import '../style.css';
 
 // Add your documentation imports here. These are available to
 // React specimen. Do NOT pass React here as Catalog does that.
+let LoginForm = require('../src/LoginForm');
+
 const documentationImports = {
-  LoginForm: require('../src/LoginForm')
+  LoginForm
 };
 const pages = [
   {
