@@ -98,7 +98,7 @@ class LoginForm extends React.Component {
     `;
 
     const InputContainer = styled.div`
-      ${'' /* margin-bottom: 15px; */}
+      margin-bottom: 15px;
     `;
 
     const Input = styled.input`
