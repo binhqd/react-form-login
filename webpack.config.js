@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 const sourcePath = path.join(__dirname, './');
@@ -28,17 +29,20 @@ const _module = {
       ]
     }, {
       test: /\.(scss|css)$/,
-      use: [
-        {
-          loader: 'css-loader',
-          options: {
-            modules: true,
-            importLoaders: true,
-            localIdentName: '[hash]-[local]'
-          }
-        },
-        'sass-loader'
-      ]
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: true,
+              localIdentName: '[local]'
+            }
+          },
+          'sass-loader'
+        ]
+      })
     }, {
       test: /\.(txt)$/,
       loader: 'raw-loader'
@@ -55,7 +59,8 @@ module.exports = function () {
   const isProd = process.env.NODE_ENV === 'production';
 
   const plugins = [
-    // new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin(),
+    new ExtractTextPlugin({ filename: (isProd ? '[hash]-docs.css' : 'docs.css'), allChunks: true })
   ];
 
   const appEntry = [
