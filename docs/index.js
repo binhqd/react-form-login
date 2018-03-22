@@ -8,9 +8,11 @@ import 'purecss/build/pure.css';
 import './main.css';
 import '../style.css';
 
+import '../build/docs.css';
+
 // Add your documentation imports here. These are available to
 // React specimen. Do NOT pass React here as Catalog does that.
-let LoginForm = require('../src/LoginForm');
+let { LoginForm } = require('../build/bundle');
 
 const documentationImports = {
   LoginForm

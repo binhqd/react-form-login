@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import ErrorText from './ErrorText';
-import styles from './style.css';
+import styles from './style.scss';
 
 
 class LoginForm extends React.Component {
