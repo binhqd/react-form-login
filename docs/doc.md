@@ -17,5 +17,8 @@ The output will be
       className: 'test'
     }
   }
+  onSubmit={(username, password) => {
+    console.log(username, password);
+  }}
 />
 ```

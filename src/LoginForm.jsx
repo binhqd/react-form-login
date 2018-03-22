@@ -20,11 +20,13 @@ class LoginForm extends React.Component {
   }
 
   handleLogin() {
-    // this.setState({
-    //   error: {}
-    // });
+    this.setState({
+      error: {}
+    });
 
-    console.log(styles);
+    const { Username, Password } = this.state;
+
+    return this.props.onSubmit(Username, Password);
 
     // this.props.dispatch(login(this.state.Username, this.state.Password, this.state.remember)).then(response => {
     //   this.setState({loading: false});
@@ -91,8 +93,8 @@ class LoginForm extends React.Component {
     }
 
     return (
-      <form action="javascript:void(0)" noValidate onSubmit={this.handleLogin} className='login-form'>
-        <div className='input-container'>
+      <form action="javascript:void(0)" noValidate onSubmit={this.handleLogin} className="login-form">
+        <div className="input-container">
           <input
             maxLength={usernameOptions.maxLength}
             placeholder={usernameOptions.placeholder}
@@ -123,7 +125,7 @@ class LoginForm extends React.Component {
             marginLeft: -15
           }}
         >
-          <div className='remember-container'>
+          <div className="remember-container">
             <div>
               <label htmlFor="remember">
                 <input
@@ -135,8 +137,8 @@ class LoginForm extends React.Component {
               </label>
             </div>
           </div>
-          <div className='button-container'>
-            <button type="submit" className='btnSubmit'>Sign In</button>
+          <div className="button-container">
+            <button type="submit" className="btnSubmit">Sign In</button>
           </div>
         </div>
       </form>
@@ -144,7 +146,8 @@ class LoginForm extends React.Component {
   }
 }
 LoginForm.propTypes = {
-  username: PropTypes.object
+  username: PropTypes.object,
+  onSubmit: PropTypes.func.isRequired
 };
 
 
