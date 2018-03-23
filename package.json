@@ -51,6 +51,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "exports-loader": "^0.7.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "gh-pages": "^1.1.0",
     "git-prepush-hook": "^1.0.2",
@@ -102,7 +103,5 @@
   "pre-push": [
     "test"
   ],
-  "dependencies": {
-    "styled-components": "^3.2.2"
-  }
+  "dependencies": {}
 }
