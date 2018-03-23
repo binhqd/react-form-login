@@ -6,7 +6,7 @@ import { LoginForm } from 'react-form-login';
 <LoginForm
   onSubmit={(username, password, isRemember) => {
     // Sending AJAX request ...
-    console.log(username, password);
+    console.log(username, password, isRemember);
   }}
 />
 ```
@@ -35,7 +35,7 @@ import { LoginForm } from 'react-form-login';
   }}
 
   onSubmit={(username, password, isRemember) => {
-    console.log(username, password);
+    console.log(username, password, isRemember);
   }}
 />
 ```
@@ -57,7 +57,7 @@ class Login extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleLogin(username, password) => {
+  handleLogin(username, password, isRemember) => {
     // Show loading
     this.setState({
       loading: true

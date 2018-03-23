@@ -7,7 +7,32 @@ import { LoginForm } from '../build/bundle';
 Enzyme.configure({ adapter: new Adapter() });
 
 test('Welcome component should return correct output', () => {
-  const wrapper = mount(<LoginForm />);
+  const wrapper = mount(
+    <LoginForm
+      form={{ className: 'login-form' }}
+
+      username={{
+        placeholder: 'Custom username',
+        className: 'input-username',
+        containerClassName: 'input-container'
+      }}
+
+      password={{
+        placeholder: 'Custom password',
+        className: 'input-password',
+        containerClassName: 'input-container'
+      }}
+
+      text={{
+        rememberMe: 'Custom Remember Me',
+        submitLabel: 'Custom Sign In'
+      }}
+
+      onSubmit={(username, password, isRemember) => {
+        console.log(username, password, isRemember);
+      }}
+    />
+  );
 
   // expect(wrapper.html()).toEqual('<div>Welcome to React Component Boilerplate</div>');
 });
