@@ -1,4 +1,10 @@
 # React Login Form
+
+[![Build Status](https://travis-ci.org/binhqd/react-form-login.svg?branch=master)](https://travis-ci.org/binhqd/react-form-login)
+[![Coverage Status](https://coveralls.io/repos/binhqd/react-description-box/badge.svg?branch=master&time=2018.03)](https://coveralls.io/r/binhqd/react-description-box?branch=master)
+[![npm version](https://img.shields.io/npm/v/react-form-login.svg?style=flat-square)](https://www.npmjs.com/package/react-form-login)
+[![Downloads](http://img.shields.io/npm/dm/react-form-login.svg)](https://www.npmjs.com/package/react-form-login)
+
 ====================
 
 Form component built with ReactJS that can be Customizable
