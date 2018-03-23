@@ -88,7 +88,7 @@ module.exports = function () {
     context: sourcePath,
     entry: appEntry,
     output: {
-      path: path.join(__dirname, 'build'),
+      path: path.join(__dirname, 'dist'),
       publicPath: isProd ? '/' : '/static',
       filename: isProd ? 'react-form-login.min.js' : 'react-form-login.js',
       libraryTarget: 'commonjs'
