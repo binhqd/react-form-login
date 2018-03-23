@@ -24,41 +24,9 @@ class LoginForm extends React.Component {
       error: {}
     });
 
-    const { Username, Password } = this.state;
+    const { Username, Password, isRemember } = this.state;
 
-    return this.props.onSubmit(Username, Password);
-
-    // this.props.dispatch(login(this.state.Username, this.state.Password, this.state.remember)).then(response => {
-    //   this.setState({loading: false});
-    //
-    //   if (response.isAuthenticated) {
-    //     this.props.history.push(this.props.defaultPage);
-    //   } else if (response.data.errors) {
-    //     let {status} = response.data;
-    //     let {errors} = response.data.data;
-    //
-    //     if (status === 400) {
-    //       let errMessages = {};
-    //       errors.map(item => {
-    //         errMessages[item.source.pointer] = item.detail;
-    //       });
-    //
-    //       this.setState({
-    //         error: errMessages
-    //       });
-    //     } else {
-    //       let message = 'Login fail';
-    //       if (errors) {
-    //         message = errors.detail || message;
-    //         this.setState({
-    //           error : {
-    //             password: 'Invalid email or password'
-    //           }
-    //         });
-    //       }
-    //     }
-    //   }
-    // });
+    return this.props.onSubmit(Username, Password, isRemember);
   }
 
   componentDidMount() {
@@ -85,35 +53,64 @@ class LoginForm extends React.Component {
     let usernameOptions = {
       maxLength: 40,
       placeholder: 'Email',
-      type: 'email'
+      type: 'email',
+      containerClassName: 'input-container'
+    };
+
+    let passwordOptions = {
+      maxLength: 40,
+      placeholder: 'Password',
+      type: 'password',
+      containerClassName: 'input-container'
+    };
+
+    let formOptions = {
+      className: 'login-form'
+    };
+
+    let i18n = {
+      rememberMe: 'Remember Me',
+      submitLabel: 'Sign In'
     };
 
     if (this.props.username) {
       usernameOptions = Object.assign(usernameOptions, this.props.username);
     }
 
+    if (this.props.password) {
+      passwordOptions = Object.assign(passwordOptions, this.props.password);
+    }
+
+    if (this.props.form) {
+      formOptions = Object.assign(formOptions, this.props.form);
+    }
+
+    if (this.props.text) {
+      i18n = Object.assign(i18n, this.props.text);
+    }
+
     return (
-      <form action="javascript:void(0)" noValidate onSubmit={this.handleLogin} className="login-form">
-        <div className="input-container">
+      <form action="javascript:void(0)" noValidate onSubmit={this.handleLogin} className={formOptions.className}>
+        <div className={usernameOptions.containerClassName}>
           <input
             maxLength={usernameOptions.maxLength}
             placeholder={usernameOptions.placeholder}
             autoComplete="off"
-            className="form-control"
+            className={usernameOptions.className}
             onChange={e => this.handleChange('Username', e)}
             type={usernameOptions.type}
           />
           <ErrorText errText={this.state.error.email} />
           <span className="glyphicon glyphicon-envelope " />
         </div>
-        <div className="form-group has-feedback input-container">
+        <div className={passwordOptions.containerClassName}>
           <input
             autoComplete="off"
-            className="form-control"
+            className={passwordOptions.className}
             maxLength={40}
             name="Password"
             onChange={e => this.handleChange('Password', e)}
-            placeholder="Password"
+            placeholder={passwordOptions.placeholder}
             type="password"
           />
           <ErrorText errText={this.state.error.password} />
@@ -133,12 +130,12 @@ class LoginForm extends React.Component {
                   checked={this.state.remember}
                   onChange={this.handleCheck}
                   type="checkbox"
-                /> Remember Me
+                /> {i18n.rememberMe}
               </label>
             </div>
           </div>
           <div className="button-container">
-            <button type="submit" className="btnSubmit">Sign In</button>
+            <button type="submit" className="btnSubmit">{i18n.submitLabel}</button>
           </div>
         </div>
       </form>
@@ -147,12 +144,16 @@ class LoginForm extends React.Component {
 }
 LoginForm.propTypes = {
   username: PropTypes.object,
+  password: PropTypes.object,
+  form: PropTypes.object,
+  text: PropTypes.object,
   onSubmit: PropTypes.func.isRequired
 };
 
 
 LoginForm.defaultProps = {
-  username: {}
+  username: {},
+  password: {}
 };
 
 export default LoginForm;
