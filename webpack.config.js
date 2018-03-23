@@ -3,8 +3,10 @@ const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const sourcePath = path.join(__dirname, './');
+const isProd = process.env.NODE_ENV === 'production';
 
 const _module = {
   rules: [
@@ -37,7 +39,8 @@ const _module = {
             options: {
               modules: true,
               importLoaders: true,
-              localIdentName: '[local]'
+              localIdentName: '[local]',
+              minimize: !!isProd
             }
           },
           'sass-loader'
@@ -56,11 +59,9 @@ const _module = {
 };
 
 module.exports = function () {
-  const isProd = process.env.NODE_ENV === 'production';
-
   const plugins = [
     // new BundleAnalyzerPlugin(),
-    new ExtractTextPlugin({ filename: (isProd ? '[hash]-docs.css' : 'docs.css'), allChunks: true })
+    new ExtractTextPlugin({ filename: (isProd ? 'style.min.css' : 'style.css'), allChunks: true })
   ];
 
   const appEntry = [
@@ -83,18 +84,36 @@ module.exports = function () {
   };
 
   const commonConfig = {
-    devtool: isProd ? 'source-map' : 'eval-source-map',
+    devtool: isProd ? 'source-map' : 'eval',
     context: sourcePath,
     entry: appEntry,
     output: {
       path: path.join(__dirname, 'build'),
       publicPath: isProd ? '/' : '/static',
-      filename: isProd ? '[hash]-bundle.js' : 'bundle.js',
+      filename: isProd ? 'react-form-login.min.js' : 'react-form-login.js',
       libraryTarget: 'commonjs'
     },
     module: _module,
     resolve: appResolver,
     plugins,
+    optimization: {
+      minimize: !!isProd,
+      minimizer: !isProd ? [] : [
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            warning: 'verbose',
+            ecma: 6,
+            beautify: false,
+            compress: false,
+            comments: false,
+            mangle: false,
+            toplevel: false,
+            keep_classnames: true,
+            keep_fnames: true
+          }
+        })
+      ]
+    },
     performance: isProd && {
       hints: 'warning'
     },
