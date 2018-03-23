@@ -1,0 +1,9 @@
+__tests__
+build/
+dist/
+docs/build/
+dist-es6/
+dist-modules/
+node_modules/
+coverage/
+docs/
