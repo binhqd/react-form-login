@@ -6,4 +6,4 @@ coverage/
 npm-debug.log
 .eslintcache
 yarn.lock
-coveralls.yml
+.coveralls.yml
