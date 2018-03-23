@@ -24,41 +24,9 @@ class LoginForm extends React.Component {
       error: {}
     });
 
-    const { Username, Password } = this.state;
+    const { Username, Password, isRemember } = this.state;
 
-    return this.props.onSubmit(Username, Password);
-
-    // this.props.dispatch(login(this.state.Username, this.state.Password, this.state.remember)).then(response => {
-    //   this.setState({loading: false});
-    //
-    //   if (response.isAuthenticated) {
-    //     this.props.history.push(this.props.defaultPage);
-    //   } else if (response.data.errors) {
-    //     let {status} = response.data;
-    //     let {errors} = response.data.data;
-    //
-    //     if (status === 400) {
-    //       let errMessages = {};
-    //       errors.map(item => {
-    //         errMessages[item.source.pointer] = item.detail;
-    //       });
-    //
-    //       this.setState({
-    //         error: errMessages
-    //       });
-    //     } else {
-    //       let message = 'Login fail';
-    //       if (errors) {
-    //         message = errors.detail || message;
-    //         this.setState({
-    //           error : {
-    //             password: 'Invalid email or password'
-    //           }
-    //         });
-    //       }
-    //     }
-    //   }
-    // });
+    return this.props.onSubmit(Username, Password, isRemember);
   }
 
   componentDidMount() {
