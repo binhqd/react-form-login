@@ -8,7 +8,7 @@
 ====================
 
 Form component built with ReactJS that can be Customizable
-
+![image](https://user-images.githubusercontent.com/3197768/37876725-34355c90-307b-11e8-840e-0762961ad204.png)
 ## Quickstart
 Install the module with:
 ```
